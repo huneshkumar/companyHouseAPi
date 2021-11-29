@@ -19,8 +19,9 @@ app.use(session({
 	cookie: { secure: false },
 }));
 
-app.get('/:item', async (req, res) => {
-  const { item } = req.params;
+app.post('/', async (req, res) => {
+  const { item } = req.body;
+  console.log(item)
   ch.search(item).then(({ body }) => {
     console.log(body);
     res.send(body.items)
